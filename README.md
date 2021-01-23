@@ -1,6 +1,6 @@
 # Bird_Migration
 This is our 19th week project. 
-# 02 Februaary 2021
+# 02 February 2021
 
 ## Project Group:
 
