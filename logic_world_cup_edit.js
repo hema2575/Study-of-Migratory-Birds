@@ -13,65 +13,97 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   accessToken: API_KEY
 }).addTo(myMap);
 
-// Country data
-var countries = [
+
+// Region data
+var regions = [
   {
-    name: "Central Highlands",
+    name: "Central High",
     location: [36.00, -94],
-    points: 227
+    // points: 227
   },
   {
     name: "East Coast",
     location: [38, -75.00],
-    points: 218
+    // points: 218
   },
   {
     name: "Lower West Coast",
     location: [33.00, -117.00],
-    points: 156
+    // points: 156
   },
   {
     name: "Northern Highlands",
     location: [55.00, -64.00],
-    points: 140
+    // points: 140
   },
   {
     name: "Other interior highlands",
     location: [38.60, -101],
-    points: 99
+    // points: 99
   },
   {
     name: "Upper west coast",
     location: [45.00, -120.00],
-    points: 98
+    // points: 98
   }
 ];
 
+// read csv file
+d3.csv("birdcount.csv").then((data) => {
 
-// Loop through the cities array and create one marker for each city object
-for (var i = 0; i < countries.length; i++) {
+    // filter array by id
+    var speciesFilter = data.filter(s => s.SPECIESNAME.toString() === 'American Coot');
+    // console.log(speciesFilter)
+    console.log(Object.keys(speciesFilter[0]))
+    // console.log(speciesFilter['AREA'][0])
+    console.log(speciesFilter[0].REGION)
 
-  // Conditionals for countries points
-  var color = "";
-  if (countries[i].points > 200) {
-    color = "yellow";
-  }
-  else if (countries[i].points > 100) {
-    color = "blue";
-  }
-  else if (countries[i].points > 90) {
-    color = "green";
-  }
-  else {
-    color = "red";
-  }
+    // loop through regions array
+    for (var i=0; i< regions.length; i++){
 
-  // Add circles to map
-  L.circle(countries[i].location, {
-    fillOpacity: 0.75,
-    color: "white",
-    fillColor: color,
-    // Adjust radius
-    radius: countries[i].points * 1500
-  }).bindPopup("<h1>" + countries[i].name + "</h1> <hr> <h3>Points: " + countries[i].points + "</h3>").addTo(myMap);
-}
+        // loop through the bird data
+        for (var j=0; j< speciesFilter.length; j++){
+
+            // define counter
+            // var birdcount = 0
+            console.log(speciesFilter[j]['REGION'])
+            // loop through birdcount data to sum totals for regions
+            // if (speciesFilter.REGION[j] === regions.name){
+            //     var birdcount = birdcount + speciesFilter.COUNT[j]
+                // append key to item in dictionary
+               // regions[i]['count']:=birdcount;
+            // }
+               
+            // console.log(birdcount)
+        }
+    }
+});
+
+
+// // Loop through the regions array and create one marker for each region object
+// for (var i = 0; i < regions.length; i++) {
+
+//   // Conditionals for countries points
+//   var color = "";
+//   if (regions[i].points > 200) {
+//     color = "yellow";
+//   }
+//   else if (regions[i].points > 100) {
+//     color = "blue";
+//   }
+//   else if (regions[i].points > 90) {
+//     color = "green";
+//   }
+//   else {
+//     color = "red";
+//   }
+
+//   // Add circles to map
+//   L.circle(regions[i].location, {
+//     fillOpacity: 0.75,
+//     color: "white",
+//     fillColor: color,
+//     // Adjust radius
+//     radius: regions[i].points * 1500
+//   }).bindPopup("<h1>" + regions[i].name + "</h1> <hr> <h3>Points: " + regions[i].points + "</h3>").addTo(myMap);
+// }
