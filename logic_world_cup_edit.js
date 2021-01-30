@@ -32,7 +32,7 @@ var regions = [
     // points: 156
   },
   {
-    name: "Northern Highlands",
+    name: "Northwen Highlands",
     location: [55.00, -64.00],
     // points: 140
   },
@@ -52,11 +52,10 @@ var regions = [
 d3.csv("birdcount.csv").then((data) => {
 
     // filter array by id
-    var speciesFilter = data.filter(s => s.SPECIESNAME.toString() === 'American Coot');
-    // console.log(speciesFilter)
-    console.log(Object.keys(speciesFilter[0]))
-    // console.log(speciesFilter['AREA'][0])
-    console.log(speciesFilter[0].REGION)
+    var speciesFilter = data.filter(s => s.SPECIESNAME === 'American Coot');
+
+    // set initial birdcount variable
+    var birdcount = 0
 
     // loop through regions array
     for (var i=0; i< regions.length; i++){
@@ -64,46 +63,53 @@ d3.csv("birdcount.csv").then((data) => {
         // loop through the bird data
         for (var j=0; j< speciesFilter.length; j++){
 
-            // define counter
-            // var birdcount = 0
-            console.log(speciesFilter[j]['REGION'])
             // loop through birdcount data to sum totals for regions
-            // if (speciesFilter.REGION[j] === regions.name){
-            //     var birdcount = birdcount + speciesFilter.COUNT[j]
-                // append key to item in dictionary
-               // regions[i]['count']:=birdcount;
-            // }
-               
-            // console.log(birdcount)
+            if (speciesFilter[j].REGION === regions[i].name){
+                
+                // console.log('bird loop inner')
+                var birdcount = birdcount + parseInt(speciesFilter[j].COUNT);
+            }
         }
+
+        // append key item to dictionary
+        regions[i]['count']=birdcount;
+
+        // reset birdcount to 0
+        var birdcount= 0
+
     }
+
 });
+    // rename dictionary
+    var newRegions = regions
+
+console.log(newRegions)
 
 
-// // Loop through the regions array and create one marker for each region object
-// for (var i = 0; i < regions.length; i++) {
+// Loop through the regions array and create one marker for each region object
+for (var i = 0; i < newRegions.length; i++) {
 
-//   // Conditionals for countries points
-//   var color = "";
-//   if (regions[i].points > 200) {
-//     color = "yellow";
-//   }
-//   else if (regions[i].points > 100) {
-//     color = "blue";
-//   }
-//   else if (regions[i].points > 90) {
-//     color = "green";
-//   }
-//   else {
-//     color = "red";
-//   }
-
-//   // Add circles to map
-//   L.circle(regions[i].location, {
-//     fillOpacity: 0.75,
-//     color: "white",
-//     fillColor: color,
-//     // Adjust radius
-//     radius: regions[i].points * 1500
-//   }).bindPopup("<h1>" + regions[i].name + "</h1> <hr> <h3>Points: " + regions[i].points + "</h3>").addTo(myMap);
-// }
+  // Conditionals for countries points
+  var color = "";
+  if (newRegions[i].count > 200) {
+    color = "yellow";
+  }
+  else if (newRegions[i].count > 100) {
+    color = "blue";
+  }
+  else if (newRegions[i].count > 90) {
+    color = "green";
+  }
+  else {
+    color = "red";
+  }
+console.log(newRegions[i])
+  // Add circles to map
+  L.circle(newRegions[i].location, {
+    fillOpacity: 0.75,
+    color: "white",
+    fillColor: color,
+    // Adjust radius
+    radius: newRegions[i].count
+  }).bindPopup("<h1>" + newRegions[i].name + "</h1> <hr> <h3>Points: " + newRegions[i].count + "</h3>").addTo(myMap);
+}
