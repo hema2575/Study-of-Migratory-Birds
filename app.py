@@ -58,8 +58,8 @@ if __name__ == "__main__":
 
 
 # flask app map route
-@app.route('/map/<species>')
-def entry(species):
+@app.route('/map') #Need to update once dynamic is set up
+def entry(): #need to update once dynamic is set up
 
     #Create dictionary for mapping
     regions = {0: {'name': "Central High", 'location': [36.00, -94]}, 
@@ -69,8 +69,8 @@ def entry(species):
     4: {'name': "Other interior highlands", 'location': [38.60, -101]}, 
     5: {'name': "Upper west coast", 'location': [45.00, -120.00]}}
 
-    # filter bird data (a) by id
-    speciesFilter = [v for v in a.values() if species in v.values()]
+    # filter bird data (a) by id as determined in route input - NEED TO CHANGE FROM TESTER "AMERICAN COOT"
+    speciesFilter = [v for v in a.values() if "American Coot" in v.values()]
 
     # set initial birdcount variable
     birdcount = 0
@@ -97,7 +97,7 @@ def entry(species):
     return render_template('mapIndex.html', regions = regions)
 
 if __name__ == "__main__":
-app.run(debug=True, host='127.0.0.1', port=5010)
+    app.run(debug=True, host='127.0.0.1', port=5010)
 
 # #flask app v2
 # #@app.route('/data/speciesname/')
