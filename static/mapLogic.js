@@ -13,32 +13,29 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   accessToken: API_KEY
 }).addTo(myMap);
 
-console.log(regions);
-
 // Loop through the regions array and create one marker for each region object
-for (var i = 0; i < regions.length; i++) {
+for (var i in regions) {
 
-  // Conditionals for countries points
+  // Conditionals for bird count
   var color = "";
-  if (regions[i].count > 200) {
+  if (regions[i].count > 20000000) {
     color = "yellow";
   }
-  else if (regions[i].count > 100) {
+  else if (regions[i].count > 10000000) {
     color = "blue";
   }
-  else if (regions[i].count > 90) {
+  else if (regions[i].count > 1000000) {
     color = "green";
   }
   else {
     color = "red";
   }
-console.log(regions[i])
   // Add circles to map
   L.circle(regions[i].location, {
     fillOpacity: 0.75,
     color: "white",
     fillColor: color,
     // Adjust radius
-    radius: regions[i].count
-  }).bindPopup("<h1>" + regions[i].name + "</h1> <hr> <h3>Points: " + regions[i].count + "</h3>").addTo(myMap);
+    radius: regions[i].count *.05
+  }).bindPopup("<h1>" + regions[i].name + "</h1> <hr> <h3>Total Bird Count: " + regions[i].count + "</h3>").addTo(myMap);
 }

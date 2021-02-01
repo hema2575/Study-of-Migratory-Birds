@@ -102,7 +102,7 @@ function getPlots(inputSpecies) {
                     color: '#7f7f7f'
                 }
             },
-            tickmode: "linear",
+            showticklabels: false,
         },
 
         margin: {
@@ -111,7 +111,7 @@ function getPlots(inputSpecies) {
             t: 100,
             b: 100
         }
-    };
+    }
 
     // create the bar plot
     Plotly.newPlot("bar", data, layout);
@@ -170,7 +170,7 @@ function init() {
         dropdown.append("option").text(name).property("value");
     });
      //  call the function to display the data and the plots to the page
-     //getPlots(species[0]);
+    //  getPlots(species[0]);
 };
 
 
