@@ -13,6 +13,8 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   accessToken: API_KEY
 }).addTo(myMap);
 
+console.log(regions)
+
 // Loop through the regions array and create one marker for each region object
 for (var i in regions) {
 
