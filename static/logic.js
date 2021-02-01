@@ -175,3 +175,11 @@ function init() {
 
 
 init();
+
+            function close_window() {
+                if (confirm("Close Window?")) {
+                window.close();
+                }
+            }
+            
+            

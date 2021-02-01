@@ -42,16 +42,16 @@ app = Flask(__name__)
 # Flask Routes
 
 #flask app gallery
-@app.route('/all')
+@app.route('/')
 def gallery():
     return render_template('gallery.html')
 
 
 #flask app v1
-@app.route('/')
+@app.route('/visuals')
 
 def entry():
-    return render_template('index.html', data = a)
+    return render_template('visuals.html', data = a)
 
 
 

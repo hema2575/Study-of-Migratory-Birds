@@ -1,61 +1,216 @@
 <!DOCTYPE html>
-<html>
-<head>
-<style>
-div.gallery {
-  margin: 5px;
-  border: 1px solid #ccc;
-  float: left;
-  width: 180px;
-}
+<html lang="en-us">
 
-div.gallery:hover {
-  border: 1px solid #777;
-}
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Birds Migration</title>
+    <title>Birds Migration</title>
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--CSS Link-->
+    <link rel="stylesheet" type="css" href="style.css">
+    <link rel="stylesheet" href="https://github.com/c3js/c3/releases/latest">
+    <!-- Load c3.css -->
+    <link href="static/c3.min.css" rel="stylesheet"> <!-- ADDED GG-->
+  </head>
 
-div.gallery img {
-  width: 100%;
-  height: auto;
-}
-
-div.desc {
-  padding: 15px;
-  text-align: center;
-}
-</style>
-</head>
-<body>
-
-<div class="gallery">
-  <a target="_blank" href="./Images/AmCoot.jpg">
-    <img src="AmCoot.jpg" alt="American Coot" width="600" height="400">
-  </a>
-  <div class="desc">American Coot</div>
-</div>
-
-<div class="gallery">
-  <a target="_blank" href="./Images/2_GrnWTeal.jpg">
-    <img src="2_GrnWTeal.jpg" alt="Grn Winged Teal" width="600" height="400">
-  </a>
-  <div class="desc">American Green-winged Teal</div>
-</div>
-
-<div class="gallery">
-  <a target="_blank" href="./Images/3_Am_Wign.jpg">
-    <img src="3_Am_Wign" alt="American Wigeon" width="600" height="400">
-  </a>
-  <div class="desc">American Wigeon</div>
-</div>
-
-<div class="gallery">
-  <a target="_blank" href="./Images/4_CinnTeal.jpg">
-    <img src="4_CinnTeal" alt="Blue-winged or Cinnamon Teal" width="600" height="400">
-  </a>
-  <div class="desc">Add a description of the image here</div>
-</div>
-<!-- update jpgs from here -->
+    <style>
+       img {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            width: 150px;
+          }
 
 
+        img:hover {
+            box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5)
+          }
 
-</body>
+          * {
+            box-sizing: border-box;
+          }
+
+          body {
+            font-family: Arial;
+            font-size: 20px;         /*------------I added this*/
+            padding: 10px;
+            background: #f1f1f1;
+          }
+
+      /* Header/Blog Title */
+      .header {
+          padding: 30px;
+          text-align: center;
+          background: white;
+        }
+
+        .header h1 {
+          font-size: 50px;
+        }
+
+        /* Style the top navigation bar */
+        .topnav {
+          overflow: hidden;
+          background-color: #333;
+        }
+
+        /* Style the topnav links */
+        .topnav a {
+          float: left;
+          display: block;
+          color: #f2f2f2;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+
+        /* Change color on hover */
+        .topnav a:hover {
+          background-color: #ddd;
+          color: black;
+        }
+
+
+
+      div.gallery {
+        border: 1px solid #ccc;
+      }
+
+      div.gallery:hover {
+        border: 1px solid #777;
+      }
+
+      div.gallery img {
+        width: 100%;
+        height: auto;
+      }
+
+      div.desc {
+        padding: 15px;
+        text-align: center;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .responsive {
+        padding: 0 6px;
+        float: left;
+        width: 24.99999%;
+      }
+
+      @media only screen and (max-width: 700px) {
+        .responsive {
+          width: 49.99999%;
+          margin: 6px 0;
+        }
+      }
+
+      @media only screen and (max-width: 500px) {
+        .responsive {
+          width: 100%;
+        }
+      }
+
+      .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      /* Footer */
+      .footer {
+        padding: 20px;
+        text-align: center;
+        background: #ddd;
+        margin-top: 20px;
+      }
+
+        .row {
+          display: -ms-flexbox; /* IE10 */
+          display: flex;
+          -ms-flex-wrap: wrap; /* IE10 */
+          flex-wrap: wrap;
+          padding: 0 4px;
+        }
+
+        /* Create four equal columns that sits next to each other */
+        .column {
+          -ms-flex: 25%; /* IE10 */
+          flex: 25%;
+          max-width: 25%;
+          padding: 0 4px;
+        }
+
+        .column img {
+          margin-top: 8px;
+          vertical-align: middle;
+          width: 100%;
+        }
+
+        /* Responsive layout - makes a two column-layout instead of four columns */
+        @media screen and (max-width: 800px) {
+          .column {
+            -ms-flex: 50%;
+            flex: 50%;
+            max-width: 50%;
+          }
+        }
+
+        /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+          .column {
+            -ms-flex: 100%;
+            flex: 100%;
+            max-width: 100%;
+          }
+        }
+
+
+
+
+    </style>
+  
+
+  <body>
+      <div class="header">
+        <h1>Study of Migratory Birds</h1>
+      </div>
+
+      
+      <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/visuals">Charts</a>
+        <a href="/map/inputSpecies">Map</a>
+        <a href="#" style="float:right">Exit</a>
+      </div>
+
+    <!-- Photo Grid -->
+      <div class="row"> 
+        <div class="col-9 col-md-12">          
+            <div class="column">
+              <img src="images/AmCoot.jpg" style="width:100%" ></img>
+              <img src="images/2_GrnWTeal.jpg" style="width:100%"></img>
+              <img src="images/AmCoot.jpg" style="width:100%"></img>
+              <img src="images/AmCoot.jpg" style="width:100%"></img>
+              <img src="images/AmCoot.jpg" style="width:100%"></img>
+              <img src="css/AmCoot.jpg" style="width:100%"></img>
+              <img src="images/AmCoot.jpg" style="width:100%"></img>
+              <img src="images/AmCoot.jpg" style="width:100%"></img>
+            </div>
+          </div>
+      </div>
+ 
+  <!-- update jpgs from here -->
+
+   <div class="footer">
+    <h2>Coding BootCamp Project 2</h2>
+   </div>
+
+  </body>
+
 </html>
