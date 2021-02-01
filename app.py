@@ -14,7 +14,7 @@ from flask import Flask, render_template, url_for
 # password=os.environ.get('DB_PASSWORD')
 
 #Call data from postgres server
-engine = create_engine('postgresql+psycopg2://postgres:password@localhost:5432/bird_data')
+engine = create_engine('postgresql+psycopg2://postgres:password@localhost:5432/bird_migration')
 
 # reflect an existing database into a new model
 Base = automap_base()
@@ -26,7 +26,7 @@ Base.prepare(engine, reflect=True)
 session = Session(engine)
 
 # Request data from postgres
-resultproxy = session.execute("SELECT * FROM bird_data")
+resultproxy = session.execute("SELECT * FROM bird_count")
 
 # Write data into dictionary
 d, a = {}, []
@@ -41,10 +41,19 @@ for rowproxy in resultproxy:
 app = Flask(__name__)
 # Flask Routes
 
+#flask app gallery
+@app.route('/all')
+def gallery():
+    return render_template('gallery.html')
+
+
 #flask app v1
 @app.route('/')
+
 def entry():
     return render_template('index.html', data = a)
+
+
 
 # flask app map route
 @app.route('/map/<species>')

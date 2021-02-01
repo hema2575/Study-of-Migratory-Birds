@@ -1,56 +1,271 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Birds Migration</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+  <!--CSS Link-->
+  <link rel="stylesheet" type="css" href="style.css">
+
+  <link rel="stylesheet" href="https://github.com/c3js/c3/releases/latest">
+
+  <!-- Load c3.css -->
+  <link href="static/c3.min.css" rel="stylesheet"> <!-- ADDED GG-->
+
+
+
 </head>
-  
+
 <script>
-      var birdData = JSON.parse('{{data|tojson}}');      
+  var birdData = JSON.parse('{{data|tojson}}');      
 </script>
 
-<body>
+<style>
+  img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+  }
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 jumbotron text-center">
-        <h1>Birds Migration</h1>
-        <p>Use the interactive tool here to pick a species</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-2">
-        <div class="well">
-          <h5>Species Name</h5>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
+  img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5)
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial;
+    padding: 10px;
+    background: #f1f1f1;
+  }
+
+  /* Header/Blog Title */
+  .header {
+    padding: 30px;
+    text-align: center;
+    background: white;
+  }
+
+  .header h1 {
+    font-size: 50px;
+  }
+
+  /* Style the top navigation bar */
+  .topnav {
+    overflow: hidden;
+    background-color: #333;
+  }
+
+  /* Style the topnav links */
+  .topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  /* Change color on hover */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  /* Create two unequal columns that floats next to each other */
+  /* Left column */
+  .leftcolumn {
+    float: left;
+    width: 40%;
+  }
+
+  /* Right column */
+  .rightcolumn {
+    float: left;
+    width: 60%;
+    background-color: #f1f1f1;
+    padding-left: 20px;
+  }
+
+  /* Fake image */
+  .fakeimg {
+    background-color: #aaa;
+    width: 50%;
+    padding: 20px;
+  }
+
+  /* Add a card effect for articles */
+  .card {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+    margin-top: 20px;
+  }
+
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 800px) {
+
+    .leftcolumn,
+    .rightcolumn {
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+  @media screen and (max-width: 400px) {
+    .topnav a {
+      float: none;
+      width: 100%;
+    }
+  }
+</style>
+
+<body>
+  <div class="header">
+    <h1>Study of Migratory Birds</h1>
+    <p>Resize the browser window to see the effect.</p>
+  </div>
+
+  <div class="topnav">
+    <a href="/all">Home</a>
+    <a href="/">Some Stats</a>
+    <a href="mapIndex.html">Map</a>
+    <a href="#" style="float:right">Exit</a>
+  </div>
+
+  <div class="row">
+    <div class="leftcolumn">
+      <div class="card">
+        <h2>Pick a Species</h2>
+        <h5>Title description</h5>
+        <select id="selDataset" onchange="optionChanged(this.value)"></select>
+        <div class="fakeimg" style="height:200px;">Image
+
         </div>
-        <!-- <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">not req</h3>
-          </div>
-          <div id="sample-metadata" class="panel-body"></div>
-        </div> -->
+
+        <p>Some text..</p>
+        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          ullamco.</p>
       </div>
-      <div class="col-md-12">
-        <div id="bar"></div>
+      <div class="card">
+        <h2>Line Chart using c3.js</h2>
+        <h5>Title description<placeholder>
+        </h5>
+        <div class="fakeimg" style="height:200px;">Image</div>
+        <p>Some text..</p>
+        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          ullamco.</p>
       </div>
-      
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div id="bubble"></div>
+    <div class="rightcolumn">
+      <div class="card" style="height:600px;">
+        <h2>Bird Count per Region</h2>
+        <h5>Title description<placeholder>
+        </h5>
+        <!-- <div class="fakeimg" style="height:200px;">Image</div> -->
+        <div id="bar"></div>
+        <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
       </div>
+      <div class="card">
+        <h3>Some Interesting Facts</h3>
+        <div class="fakeimg">
+          <p>Image</p>
+        </div>
+        <div class="fakeimg">
+          <p>Image</p>
+        </div>
+        <div class="fakeimg">
+          <p>Image</p>
+        </div>
+      </div>
+
     </div>
   </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script src="static/logic.js"></script>
+  <div class="footer">
+    <h2>Coding BootCamp Project 2</h2>
+  </div>
 
 
 
-                                                                                                                                                                                                                                                                                                                  
+  <!-- Content Section 
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-12">
+           Left box  
+          <div class="box">
+            <h5 class="title">Pick A Species</h5>
+            <hr>
+            <select id="selDataset" onchange="optionChanged(this.value)"></select>
+          </div>
+        </div>
+        <div class="col-lg-7 col-md-24">
+           Right Box 
+          <div class="box">
+            <h5 class="title">BirdCount Per Region</h5>
+            <hr>
+            <div id="bar"></div>
+          </div>
+        </div>
+      </div>
+        <div class="container">
+            <div class="col-lg-3 col-md-24">
+               box for the line graph 
+              <div class="box">
+                <h5 class="title">LineGraph using c3.js</h5>
+                <hr>
+            </div>
+        </div> -->
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- Load d3.js and c3.js -->
+  <script src="https://d3js.org/d3.v5.min.js"></script> <!-- ADDED GG-->
+  <script src="static/c3.min.js"></script> <!-- ADDED GG-->
+
+  <!-- <script src="static/logic.js"></script> -->
+  <script src="static/linechartlogic.js"></script>
+  
+</body>
+
+</html>
