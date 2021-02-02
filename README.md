@@ -1,5 +1,5 @@
 # Bird_Migration
-![Alt text] (https://raw.githubusercontent.com/hema2575/Bird_Migration/main/image/Screen%20Shot%202021-02-02%20at%203.05.02%20PM.png)
+![Alt text](https://raw.githubusercontent.com/hema2575/Bird_Migration/main/image/Screen%20Shot%202021-02-02%20at%203.05.02%20PM.png)
 # 02 February 2021
 
 ## Project Group:
