@@ -19,16 +19,16 @@ https://migbirdapps.fws.gov/mbdc/databases/mmw/mexicanQuery.asp?db=1
 
 ## Top 10 Bird Species
 
-- 1. American Coot
-- 2. Northern Pintail
-- 3. Northern Shoveler
-- 4. Generic Scaup
-- 5. Blue-winged or Cinnamon Teal
-- 6. American Green-winged Teal	
-- 7. American Wigeon
-- 8. Generic Whisling-Duck	
-- 9. Redhead	
-- 10. Gadwall
+1. American Coot
+2. Northern Pintail
+3. Northern Shoveler
+4. Generic Scaup
+5. Blue-winged or Cinnamon Teal
+6. American Green-winged Teal	
+7. American Wigeon
+8. Generic Whisling-Duck	
+9. Redhead	
+10. Gadwall
 
 ## Regions
 
