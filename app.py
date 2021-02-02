@@ -60,7 +60,7 @@ def entry():
 def map(species):
 
     #Create dictionary for mapping
-    regions = {0: {'name': "Central High", 'location': [36.00, -94]}, 
+    regions = {0: {'name': "Central Highlands", 'location': [36.00, -94]}, 
     1: {'name': "East Coast", 'location': [38, -75.00]}, 
     2: {'name': "Lower West Coast", 'location': [33.00, -117.00]}, 
     3: {'name': "Northern Highlands", 'location': [55.00, -64.00]}, 
