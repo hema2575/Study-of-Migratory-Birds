@@ -1,7 +1,7 @@
 // Create a map object
 var myMap = L.map("map", {
   center: [39.82, -98.57],
-  zoom: 5
+  zoom: 4
 });
 
 L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
@@ -38,6 +38,6 @@ for (var i in regions) {
     color: "white",
     fillColor: color,
     // Adjust radius
-    radius: regions[i].count *.05
+    radius: regions[i].count *.08
   }).bindPopup("<h1>" + regions[i].name + "</h1> <hr> <h3>Total Bird Count: " + regions[i].count + "</h3>").addTo(myMap);
 }
