@@ -11,10 +11,13 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <!--CSS Link-->
   <link rel="stylesheet" type="css" href="style.css">
-  <link rel="stylesheet" href="https://github.com/c3js/c3/releases/latest">
+  <!-- <link rel="stylesheet" href="https://github.com/c3js/c3/releases/latest"> -->
   <!-- Load c3.css -->
   <link href="static/c3.min.css" rel="stylesheet"> <!-- ADDED GG-->
+   <!-- Papa Parse -->
+   <script src ="static/papaparse.min.js"></script> 
 </head>
+
 
 <style>
   img {
@@ -34,7 +37,8 @@
 
   body {
     font-family: Arial;
-    font-size: 20px;         /*------------I added this*/
+    font-size: 20px;
+    /*------------I added this*/
     padding: 10px;
     background: #f1f1f1;
   }
@@ -76,7 +80,8 @@
   /* Left column */
   .leftcolumn {
     float: left;
-    width: 40%;
+    width: 20%;
+    padding-left: 50px;
   }
 
   /* Right column */
@@ -84,7 +89,7 @@
     float: left;
     width: 60%;
     background-color: #f1f1f1;
-    padding-left: 20px;
+    padding-left: 100px;
   }
 
   /* Fake image */
@@ -135,59 +140,53 @@
   }
 </style>
 
-        <script>
-          var birdData = JSON.parse('{{data|tojson}}');      
-        </script>
+<script>
+  var birdData = JSON.parse('{{data|tojson}}');     
+</script>
 
-  <body>
-    <div class="header">
-      <h1>Study of Migratory Birds</h1>
-    </div>
 
-    <div class="topnav">
-      <a href="/">Home</a>
-      <a href="/visuals">Charts</a>
-      <a href="/map/inputSpecies">Map</a>
-      <a href="#" style="float:right";onclick="close_window()">Exit</a>
-      
-    </div>
 
-    <div class="row">
-      <div class="leftcolumn">
-        <div class="card">
-          <h2>Pick a Species</h2>
-          <h5>Title description</h5>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
-          <div class="fakeimg" style="height:200px;">Image
+<body>
+  <div class="header">
+    <h1>Study of Migratory Birds</h1>
+  </div>
 
-          </div>
+  <div class="topnav">
+    <a href="/">Home</a>
+    <a href="/visuals">Charts</a>
+    <a href="/map/inputSpecies">Map</a>
+    <a href="#" style="float:right" ;onclick="close_window()">Exit</a>
 
-          <p>Some text..</p>
-          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco.</p>
-        </div>
-        <div class="card">
-          <h2>Line Chart using c3.js</h2>
-          <h5>Title description<placeholder>
-          </h5>
-          <div class="fakeimg" style="height:200px;">Image</div>
-          <p>Some text..</p>
-          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco.</p>
-        </div>
+  </div>
+
+  <div class="row">
+    <div class="leftcolumn">
+      <div class="card" style="height:800px;">
+        <h2>Pick a Species</h2>
+        <h5>Title description</h5>
+        <select id="selDataset" onchange="optionChanged(this.value)"></select>
+        <!-- <div class="fakeimg" style="height:200px;">Image </div> -->
       </div>
-      <div class="rightcolumn">
-        <div class="card" style="height:600px;">
-          <h2>Bird Count per Region</h2>
-          <h5>Title description<placeholder>
-          </h5>
-          <!-- <div class="fakeimg" style="height:200px;">Image</div> -->
-          <div id="bar"></div>
-          <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-        </div>
-        <!-- <div class="card">
+     
+    </div>
+    <div class="rightcolumn">
+      <div class="card" style="height:500px;">
+        <h2>Bird Count per Region</h2>
+        <h5>Title description<placeholder>
+        </h5>
+        <!-- <div class="fakeimg" style="height:200px;">Image</div> -->
+        <div id="bar"></div>
+      </div>
+      <div class="card" style="height:500px;">
+        <h2>Line Chart using c3.js</h2>
+        <h5>Title description<placeholder>
+        </h5>
+        <p>the line chart goes here</p>        
+        <!-- <div class="fakeimg" style="height:200px;">Image</div> -->
+        <div id="chart"></div>
+      </div>
+    </div>
+      <!-- <div class="card">
           <h3>Some Interesting Facts</h3>
           <div class="fakeimg">
             <p>Image</p>
@@ -200,33 +199,35 @@
           </div>
         </div> -->
 
-      </div>
-    </div>
-
-    <div class="footer">
-      <h2>Coding BootCamp Project 2</h2>
-    </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <!-- Load d3.js and c3.js -->
-    <script src="https://d3js.org/d3.v5.min.js"></script> <!-- ADDED GG-->
-    <script src="static/c3.min.js"></script> <!-- ADDED GG-->
-
-    <!-- <script src="static/logic.js"></script> -->
-    <script src="static/linechartlogic.js"></script>
     
-  </body>
+  </div>
+
+  <div class="footer">
+    <h2>Coding BootCamp Project 2</h2>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  
+  <!-- Load d3.js and c3.js -->
+  <script src="https://d3js.org/d3.v5.min.js"></script> <!-- ADDED GG-->
+  <script src="static/c3.min.js"></script> <!-- ADDED GG-->
+  
+
+  <!-- <script src="static/logic.js"></script> -->
+  <script src="static/linechartlogic.js"></script>
+
+</body>
 
 </html>
