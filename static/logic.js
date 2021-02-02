@@ -115,6 +115,31 @@ function getPlots(inputSpecies) {
 
     // create the bar plot
     Plotly.newPlot("bar", data, layout);
+    
+    //   // The bubble chart
+    //   var trace1 = {
+    //     x: filterdata[0].REGION,
+    //     y: filterdata[0].totalbirdcountperregion,
+    //     mode: "markers",
+    //     marker: {
+    //         size: filterdata[0].totalbirdcountperregion,
+    //         color: filterdata[0].REGION
+    //     },
+        
+    // };
+
+    // // set the layout for the bubble plot
+    // var layout_2 = {
+    //     xaxis:{title: "Species Spread"},
+    //     height: 550,
+    //     width: 1000
+    // };
+
+    // // creating data variable 
+    // var data1 = [trace1];
+
+    // // create the bubble plot
+    // Plotly.newPlot("bubble", data1, layout_2); 
 
 };
 //getPlots("American Coot");
@@ -122,32 +147,7 @@ function getPlots(inputSpecies) {
 // create the function for the change event
 function optionChanged(inputSpecies) {
     getPlots(inputSpecies);
-}
-
-// create the function to get the necessary data
-// function getDemoInfo(id) {
-//     // read the json file to get data
-//     d3.json("samples.json").then((data) => {
-//         // get the metadata info for the demographic panel
-//         var metadata = data.metadata;
-
-//         // console.log(metadata)
-
-//         // filter meta data info by id
-//         var result = metadata.filter(meta => meta.id.toString() === id)[0];
-//         // select demographic panel to put data
-//         var demographicInfo = d3.select("#sample-metadata");
-
-//         // empty the demographic info panel each time before getting new id info
-//         demographicInfo.html("");
-
-//         // grab the necessary demographic data data for the id and append the info to the panel
-//         Object.entries(result).forEach((key) => {
-//             demographicInfo.append("h5").text(key[0].toUpperCase() + ": " + key[1] + "\n");
-//         });
-//     });
-// }
-
+}       
 
 // create the function for the initial data rendering
 function init() {
@@ -181,5 +181,91 @@ init();
                 window.close();
                 }
             }
-            
-            
+// This is the chart.js line chart
+//function example() {
+    //useEffect(() => {
+        var chartdata = {            
+                labels: ['Central Highlands', 'East Coast', 'Lower West Coast','Northwestern Highlands','Other interior highlands','Upper west coast'],
+                datasets: [
+                    {
+                  label: 'Amercian Coot',
+                  fill: false,
+                  // backgroundColor: 'rgb(255, 99, 132)',
+                  borderColor: 'rgb(255, 99, 132)',
+                  data: [1623058,743559,69749,598172,169325,5032543],                  
+                },
+                {   label: 'Amercian Wigeon',
+                    fill: false,
+                    // backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgba(59, 89, 152, 1)',
+                    data: [1161646,3320612,524441,138270,20107,2536762],
+                  },
+                  { label: 'Amercian Green-winged Teal',
+                    fill: false,
+                    // backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgba(59, 89, 152, 1)',
+                    data: [69749, 743559, 5032543, 169325, 1623058, 598172],
+                  },
+                  {
+                    label: 'Generic Scaup',
+                    fill: false,
+                    // backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [1443692, 5058974, 4096106, 6755, 187374, 90383],                  
+                  },
+  
+                  {   label: 'Cinnamon Teal',
+                      fill: false,
+                      // backgroundColor: 'rgb(255, 99, 132)',
+                      borderColor: 'rgba(59, 89, 152, 1)',
+                      data: [849835, 4778350, 2727452, 40415, 1047877, 27225],
+                    },
+                    {
+                        label: 'Whistling-Duck',
+                        fill: false,
+                        // backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: [182922, 1035147, 4973652, 15, 2191, 0],                  
+                      },
+      
+                      {   label: 'Northern Pintail',
+                          fill: false,
+                          // backgroundColor: 'rgb(255, 99, 132)',
+                          borderColor: 'rgba(99, 89, 152, 1)',
+                          data: [3479053, 5747440, 508827, 17091076, 276850, 1008984],
+                        },
+                        {
+                            label: 'Northern Shoveler',
+                            fill: false,
+                            // backgroundColor: 'rgb(255, 99, 132)',
+                            borderColor: 'rgb(255, 168, 132)',
+                            data: [1881667, 1037635, 7157726, 72279, 1881789, 320602],                  
+                          },
+          
+                          {   label: 'Redhead',
+                              fill: false,
+                              // backgroundColor: 'rgb(255, 99, 132)',
+                              borderColor: 'rgba(59, 89, 182, 1)',
+                              data: [30397, 12345, 4904278, 1175515, 745, 62442],
+                            },
+                            {   label: 'Gadwall',
+                              fill: false,
+                              // backgroundColor: 'rgb(255, 99, 132)',
+                              borderColor: 'rgba(59, 59, 152, 1)',
+                              data: [1799731, 1206097, 269269, 24315, 521659, 100754],                         },          
+
+            ]              
+        };
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: 'line',    
+          // The data for our dataset
+          data: chartdata    
+          // Configuration options go here
+         // options: {}
+        });
+      //  return () => chart.destroy();
+     // });
+      //return <div className="chartjs-wrapper"><canvas id="myChart" className="chartjs"></canvas></div>;
+   // }

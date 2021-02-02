@@ -16,6 +16,8 @@
   <link href="static/c3.min.css" rel="stylesheet"> <!-- ADDED GG-->
    <!-- Papa Parse -->
    <script src ="static/papaparse.min.js"></script> 
+   <!-- Installing chart.js -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </head>
 
 
@@ -80,7 +82,7 @@
   /* Left column */
   .leftcolumn {
     float: left;
-    width: 20%;
+    width: 40%;
     padding-left: 50px;
   }
 
@@ -89,8 +91,9 @@
     float: left;
     width: 60%;
     background-color: #f1f1f1;
-    padding-left: 100px;
+    padding-left: 60px;
   }
+  
 
   /* Fake image */
   .fakeimg {
@@ -138,11 +141,29 @@
       width: 100%;
     }
   }
+
+  /* for the chartjs line chart */
+  /* .chartjs-wrapper {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  .chartjs {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+  } */
+
+
+
 </style>
 
 <script>
-  var birdData = JSON.parse('{{data|tojson}}');     
+  var birdData = JSON.parse('{{data|tojson}}');  
+  
+    
 </script>
+
 
 
 
@@ -163,29 +184,31 @@
     <div class="leftcolumn">
       <div class="card" style="height:800px;">
         <h2>Pick a Species</h2>
-        <h5>Title description</h5>
+        <h5></h5>
         <select id="selDataset" onchange="optionChanged(this.value)"></select>
         <!-- <div class="fakeimg" style="height:200px;">Image </div> -->
       </div>
      
     </div>
     <div class="rightcolumn">
-      <div class="card" style="height:500px;">
+      <div class="card" style="height:600px;">
         <h2>Bird Count per Region</h2>
-        <h5>Title description<placeholder>
+        <h5><placeholder>
         </h5>
         <!-- <div class="fakeimg" style="height:200px;">Image</div> -->
         <div id="bar"></div>
       </div>
-      <div class="card" style="height:500px;">
-        <h2>Line Chart using c3.js</h2>
-        <h5>Title description<placeholder>
-        </h5>
-        <p>the line chart goes here</p>        
+      
+      <div class="card" style="height:1000px;">
+        <h2>Line Chart showing bird distribution</h2>                      
         <!-- <div class="fakeimg" style="height:200px;">Image</div> -->
-        <div id="chart"></div>
-      </div>
-    </div>
+        <!-- <div id="chart"></div> -->             
+            <div>
+              <canvas id="myChart"></canvas>
+              <div>           
+      
+        </div>
+    </div>  
       <!-- <div class="card">
           <h3>Some Interesting Facts</h3>
           <div class="fakeimg">
@@ -198,13 +221,11 @@
             <p>Image</p>
           </div>
         </div> -->
-
-    
   </div>
 
-  <div class="footer">
+  <!-- <div class="footer">
     <h2>Coding BootCamp Project 2</h2>
-  </div>
+  </div> -->
 
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -223,11 +244,8 @@
   <!-- Load d3.js and c3.js -->
   <script src="https://d3js.org/d3.v5.min.js"></script> <!-- ADDED GG-->
   <script src="static/c3.min.js"></script> <!-- ADDED GG-->
-  
-
-  <!-- <script src="static/logic.js"></script> -->
-  <script src="static/linechartlogic.js"></script>
-
+  <script src="static/logic.js"></script>
+  <!-- <script src="static/linechartlogic.js"></script> -->
 </body>
 
 </html>
