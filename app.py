@@ -59,7 +59,7 @@ def map(species):
     4: {'name': "Other interior highlands", 'location': [38.60, -101]}, 
     5: {'name': "Upper west coast", 'location': [45.00, -120.00]}}
 
-    # filter bird data (a) by id as determined in route input - NEED TO CHANGE FROM TESTER "AMERICAN COOT"
+    # filter bird data (a) by id as determined in route input
     speciesFilter = list(filter(lambda d: d['SPECIESNAME'] == species, a))
 
     # set initial birdcount variable

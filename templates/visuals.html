@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Birds Migration</title>
-    <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!--CSS Link-->
-    <link rel="stylesheet" type="css" href="style.css">
-     <!-- Installing chart.js -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Birds Migration</title>
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!--CSS Link-->
+  <link rel="stylesheet" type="css" href="style.css">
+   <!-- Installing chart.js -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+</head>
 
 
 <style>
@@ -136,10 +136,11 @@
       width: 100%;
     }
   }
+
 </style>
 
 <script>
-  var birdData = JSON.parse('{{data|tojson}}');    
+  var birdData = JSON.parse('{{data|tojson}}');      
 </script>
 
 <body>
@@ -173,13 +174,14 @@
       </div>
       
       <div class="card" style="height:1000px;">
-        <h2>Line Chart showing bird distribution</h2>                                  
+        <h2>Line Chart showing bird distribution</h2>                                
             <div>
               <canvas id="myChart"></canvas>
               <div>           
       
         </div>
     </div>  
+
   </div>
 
   <!-- Bootstrap JS -->
@@ -196,8 +198,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   
- <!-- Load d3.js and c3.js -->
- <script src="https://d3js.org/d3.v5.min.js"></script>
+  <!-- Load d3.js and c3.js -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="static/logic.js"></script>
 </body>
 
