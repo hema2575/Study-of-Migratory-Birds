@@ -86,6 +86,11 @@ def map(species):
     #render template
     return render_template('mapIndex.html', regions = regions)
 
+#flask app for exit
+@app.route('/exit')
+def closewindow():
+    return "<script>window.onload = window.close();</script>"
+
 #run app
 if __name__ == "__main__":
     app.run(debug=True, host='127.0.0.1', port=5010)
