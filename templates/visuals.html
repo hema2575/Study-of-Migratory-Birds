@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Birds Migration</title>
-  <!-- Bootstrap CDN -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <!--CSS Link-->
-  <link rel="stylesheet" type="css" href="style.css">
-  <!-- <link rel="stylesheet" href="https://github.com/c3js/c3/releases/latest"> -->
-  <!-- Load c3.css -->
-  <link href="static/c3.min.css" rel="stylesheet"> <!-- ADDED GG-->
-   <!-- Papa Parse -->
-   <script src ="static/papaparse.min.js"></script> 
-   <!-- Installing chart.js -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Birds Migration</title>
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--CSS Link-->
+    <link rel="stylesheet" type="css" href="style.css">
+     <!-- Installing chart.js -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  </head>
 
 
 <style>
@@ -141,31 +136,11 @@
       width: 100%;
     }
   }
-
-  /* for the chartjs line chart */
-  /* .chartjs-wrapper {
-    background-color: white;
-    padding: 20px;
-    margin-top: 20px;
-  }
-  .chartjs {
-    background-color: white;
-    padding: 20px;
-    margin-top: 20px;
-  } */
-
-
-
 </style>
 
 <script>
-  var birdData = JSON.parse('{{data|tojson}}');  
-  
-    
+  var birdData = JSON.parse('{{data|tojson}}');    
 </script>
-
-
-
 
 <body>
   <div class="header">
@@ -186,7 +161,6 @@
         <h2>Pick a Species</h2>
         <h5></h5>
         <select id="selDataset" onchange="optionChanged(this.value)"></select>
-        <!-- <div class="fakeimg" style="height:200px;">Image </div> -->
       </div>
      
     </div>
@@ -195,37 +169,18 @@
         <h2>Bird Count per Region</h2>
         <h5><placeholder>
         </h5>
-        <!-- <div class="fakeimg" style="height:200px;">Image</div> -->
         <div id="bar"></div>
       </div>
       
       <div class="card" style="height:1000px;">
-        <h2>Line Chart showing bird distribution</h2>                      
-        <!-- <div class="fakeimg" style="height:200px;">Image</div> -->
-        <!-- <div id="chart"></div> -->             
+        <h2>Line Chart showing bird distribution</h2>                                  
             <div>
               <canvas id="myChart"></canvas>
               <div>           
       
         </div>
     </div>  
-      <!-- <div class="card">
-          <h3>Some Interesting Facts</h3>
-          <div class="fakeimg">
-            <p>Image</p>
-          </div>
-          <div class="fakeimg">
-            <p>Image</p>
-          </div>
-          <div class="fakeimg">
-            <p>Image</p>
-          </div>
-        </div> -->
   </div>
-
-  <!-- <div class="footer">
-    <h2>Coding BootCamp Project 2</h2>
-  </div> -->
 
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -241,11 +196,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   
-  <!-- Load d3.js and c3.js -->
-  <script src="https://d3js.org/d3.v5.min.js"></script> <!-- ADDED GG-->
-  <script src="static/c3.min.js"></script> <!-- ADDED GG-->
+ <!-- Load d3.js and c3.js -->
+ <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="static/logic.js"></script>
-  <!-- <script src="static/linechartlogic.js"></script> -->
 </body>
 
 </html>

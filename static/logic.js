@@ -1,30 +1,17 @@
-// var params = 'name=John';
-
-// fetch(`/data/${params}/`)
-//     .then(response => {
-//             response.json()
-//             .then(data => {
-//                 console.log(data); // Use the data is some way
-//             });
-//     });
-// console.log(birdData);
+// Function to generate bar plot
 function getPlots(inputSpecies) {
+   
     //Read samples.json
     console.log(inputSpecies)
-    // d3.json("samples.json").then (sampledata =>{
-    //     // console.log(sampledata)
-    //     //filtering on samples
-    //     var sampleinfo = sampledata.samples
-    //     console.log(sampleinfo)
-    var filterdata = birdData.filter(x => x.SPECIESNAME === inputSpecies)
-    //console.log(filterdata)
-    // var OTU_id = filterdata[0].otu_ids;
-    // console.log(ids)
-    //var sampleValues = parseInt(filterdata[0]["COUNT"]);
-    //console.log(sampleValues)
 
+    // Filter data by selected species name
+    var filterdata = birdData.filter(x => x.SPECIESNAME === inputSpecies)
+
+    // Generate empty list for regions
     const regions = [];
     const map = new Map();
+
+    // Loop through data to write unique region names to regions list
     for (const item of filterdata) {
         if (!map.has(item.REGION)) {
             map.set(item.REGION, true);    // set any value to Map
@@ -33,15 +20,13 @@ function getPlots(inputSpecies) {
             );
         }
     }
-    //console.log(regions)
-    //console.log(regions[2])
 
-    //sum of the count of birds for each region given input species:
-    // set initial birdcount variable
-
+    // Write empty list for bird count
     var totalbirdcountperregion = []
-    //console.log(totalbirdcountperregion)
+
+    // Set bird counter to 0
     var birdcount = 0
+
     // loop through regions array
     for (var i = 0; i < regions.length; i++) {
         // loop through the bird data
@@ -54,12 +39,13 @@ function getPlots(inputSpecies) {
         }
         // append key item to dictionary
         totalbirdcountperregion.push(birdcount)
-        console.log(totalbirdcountperregion)
+
         // reset birdcount to 0
         var birdcount = 0
 
     }
 
+    // set trace for bar chart
     var trace = {
         x: regions,
         y: totalbirdcountperregion,
@@ -115,34 +101,7 @@ function getPlots(inputSpecies) {
 
     // create the bar plot
     Plotly.newPlot("bar", data, layout);
-    
-    //   // The bubble chart
-    //   var trace1 = {
-    //     x: filterdata[0].REGION,
-    //     y: filterdata[0].totalbirdcountperregion,
-    //     mode: "markers",
-    //     marker: {
-    //         size: filterdata[0].totalbirdcountperregion,
-    //         color: filterdata[0].REGION
-    //     },
-        
-    // };
-
-    // // set the layout for the bubble plot
-    // var layout_2 = {
-    //     xaxis:{title: "Species Spread"},
-    //     height: 550,
-    //     width: 1000
-    // };
-
-    // // creating data variable 
-    // var data1 = [trace1];
-
-    // // create the bubble plot
-    // Plotly.newPlot("bubble", data1, layout_2); 
-
 };
-//getPlots("American Coot");
 
 // create the function for the change event
 function optionChanged(inputSpecies) {
@@ -151,12 +110,13 @@ function optionChanged(inputSpecies) {
 
 // create the function for the initial data rendering
 function init() {
-    //     select dropdown menu 
+    // select dropdown menu 
     var dropdown = d3.select("#selDataset");
 
-    //     read the data 
+    // create empty set for species names
     const species = [];
     const map = new Map();
+    // Loop through data to write unique species names to species list
     for (const item of birdData) {
         if (!map.has(item.SPECIESNAME)) {
             map.set(item.SPECIESNAME, true);    // set any value to Map
@@ -165,12 +125,10 @@ function init() {
             );
         }
     }
-    //    get the id data to the dropdwown menu
+    // append species names to the dropdwown menu
     species.forEach(function (name) {
         dropdown.append("option").text(name).property("value");
     });
-     //  call the function to display the data and the plots to the page
-    //  getPlots(species[0]);
 };
 
 
@@ -182,8 +140,6 @@ init();
                 }
             }
 // This is the chart.js line chart
-//function example() {
-    //useEffect(() => {
         var chartdata = {            
                 labels: ['Central Highlands', 'East Coast', 'Lower West Coast','Northwestern Highlands','Other interior highlands','Upper west coast'],
                 datasets: [
@@ -256,16 +212,11 @@ init();
 
             ]              
         };
+        // Assign chart to element on html
         var ctx = document.getElementById('myChart').getContext('2d');
         var chart = new Chart(ctx, {
           // The type of chart we want to create
           type: 'line',    
           // The data for our dataset
           data: chartdata    
-          // Configuration options go here
-         // options: {}
         });
-      //  return () => chart.destroy();
-     // });
-      //return <div className="chartjs-wrapper"><canvas id="myChart" className="chartjs"></canvas></div>;
-   // }
